@@ -30,24 +30,13 @@ func main() {
 	fmt.Println("sucess to connect database")
 	defer db.Close()
 
-	// Migrate the schema
-	db.AutoMigrate(&models.Product{})
+	// create tables
+	db.AutoMigrate(&models.User{})
+	// db.CreateTable(&models.User{})
 
-	// Create
-	db.Create(&models.Product{Code: "L1212", Price: 1000})
-
-	// Read
-	var product models.Product
-	db.First(&product, 1) // find product with id 1
-	fmt.Println("Product1", product)
-	db.First(&product, "code = ?", "L1212") // find product with code l1212
-	fmt.Println("Product2", product)
-
-	// Update - update product's price to 2000
-	db.Model(&product).Update("Price", 2000)
-
-	// Delete - delete product
-	db.Delete(&product)
+	user := models.User{LoginName: "Jinzhu", Pwd: "123456"}
+	db.NewRecord(user) // => returns `true` as primary key is blank
+	db.Create(&user)
 
 	router := httprouter.New()
 	router.GET("/", Index)

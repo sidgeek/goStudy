@@ -7,7 +7,7 @@ import (
 
 // Data model
 type User struct {
-	Id        int
+	gorm.Model
 	LoginName string
 	Pwd       string
 }
@@ -24,10 +24,4 @@ type Comment struct {
 	VideoId string `json:"video_id"`
 	Author  string `json:"author"`
 	Content string `json:"content"`
-}
-
-type Product struct {
-	gorm.Model
-	Code  string
-	Price uint
 }
