@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -17,7 +19,14 @@ func Hello(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func main() {
-	// Hello world, the web server
+	// connect db postgres
+	db, err := gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=test password=example sslmode=disable")
+	if err != nil {
+		fmt.Println(err)
+		panic("failed to connect database")
+	}
+	fmt.Println("sucess to connect database")
+	defer db.Close()
 
 	router := httprouter.New()
 	router.GET("/", Index)
