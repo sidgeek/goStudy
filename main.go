@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	"goStudy/models"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/julienschmidt/httprouter"
@@ -27,6 +29,25 @@ func main() {
 	}
 	fmt.Println("sucess to connect database")
 	defer db.Close()
+
+	// Migrate the schema
+	db.AutoMigrate(&models.Product{})
+
+	// Create
+	db.Create(&models.Product{Code: "L1212", Price: 1000})
+
+	// Read
+	var product models.Product
+	db.First(&product, 1) // find product with id 1
+	fmt.Println("Product1", product)
+	db.First(&product, "code = ?", "L1212") // find product with code l1212
+	fmt.Println("Product2", product)
+
+	// Update - update product's price to 2000
+	db.Model(&product).Update("Price", 2000)
+
+	// Delete - delete product
+	db.Delete(&product)
 
 	router := httprouter.New()
 	router.GET("/", Index)
