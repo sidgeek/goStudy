@@ -5,11 +5,23 @@ import (
 	"testing"
 )
 
-func TestPrint(t *testing.T) {
-	t.SkipNow() // 掉过当前test case,只能写在case开头
+func testPrint(t *testing.T) {
 	res := Print1to20()
 	fmt.Println("hey")
 	if res != 210 {
 		t.Errorf("Wrong result of Print1to20")
 	}
+}
+
+func testPrint2(t *testing.T) {
+	res := Print1to20()
+	res++
+	if res != 211 {
+		t.Errorf("Wrong result of TestPrint2")
+	}
+}
+
+func TestAll(t *testing.T) {
+	t.Run("TestPrint", testPrint)
+	t.Run("TestPrint2", testPrint2)
 }
