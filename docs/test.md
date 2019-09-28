@@ -52,7 +52,17 @@ t的参数类型：
   <!-- ******************************************************** -->
 
 4、所有Test的初始化(使用特殊函数TestMain)
+  参数类型: *testing.M
   func TestMain(m *testing.M) {
     fmt.Println("test main first")
     m.Run() // 开始运行其它case,在它之前进行初始化
   }
+
+5、benchmark
+  case 以Benchmark开头
+  参数类型: *testing.B
+  benchmark的case一般会跑b.N次，而且每次执行都会如此
+  在执行过程中会根据实际case的执行时间是否稳定会增加b.N次数以达到稳态
+
+  执行:
+  go test -bench=.

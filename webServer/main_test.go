@@ -30,3 +30,9 @@ func TestMain(m *testing.M) {
 	fmt.Println("test main first")
 	m.Run()
 }
+
+func BenchmarkAll(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Print1to20()
+	}
+}
