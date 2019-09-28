@@ -16,7 +16,7 @@
         password: password
         host: localhost
 
-二、表迁移
+二、创建一条迁移
 1）执行下面指令（在db/migrations生成两个文件）
   migrate create -ext sql -dir db/migrations -seq create_users_table
 
@@ -42,5 +42,34 @@
 4）检查数据表是否正确创建，结束。
 
 
-三、其它
+三、创建多条迁移(假设同时创建users和movies表)
+  migrate create -ext sql -dir db/migrations -seq create_users_and_movies_table
+  区别：两个文件的内容使用（BEGIN and COMMIT）包裹
+  ...up.sql:
+      BEGIN;
+
+      CREATE TABLE IF NOT EXISTS users(
+        user_id serial PRIMARY KEY,
+        username VARCHAR (50) UNIQUE NOT NULL,
+        password VARCHAR (50) NOT NULL,
+        email VARCHAR (300) UNIQUE NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS movies(
+        movie_id serial PRIMARY KEY,
+        moviename VARCHAR (50) UNIQUE NOT NULL,
+        movieurl VARCHAR (50) NOT NULL,
+      );
+
+      COMMIT;
+
+  ...down.sql: (注意顺序应该和创建时刚好相反)
+      BEGIN;
+
+      DROP TABLE IF EXISTS movies;
+      DROP TABLE IF EXISTS users;
+
+      COMMIT;
+
+四、其它
   参考: https://github.com/golang-migrate/migrate/blob/master/database/postgres/TUTORIAL.md

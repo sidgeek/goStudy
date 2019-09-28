@@ -30,10 +30,6 @@ func main() {
 	fmt.Println("sucess to connect database")
 	defer db.Close()
 
-	// create tables
-	db.AutoMigrate(&models.User{})
-	// db.CreateTable(&models.User{})
-
 	user := models.User{LoginName: "Jinzhu", Pwd: "123456"}
 	db.NewRecord(user) // => returns `true` as primary key is blank
 	db.Create(&user)
