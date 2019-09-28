@@ -53,6 +53,6 @@ t的参数类型：
 
 4、所有Test的初始化(使用特殊函数TestMain)
   func TestMain(m *testing.M) {
-    fmt.Println("test main first")}
+    fmt.Println("test main first")
     m.Run() // 开始运行其它case,在它之前进行初始化
   }

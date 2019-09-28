@@ -25,3 +25,8 @@ func TestAll(t *testing.T) {
 	t.Run("TestPrint", testPrint)
 	t.Run("TestPrint2", testPrint2)
 }
+
+func TestMain(m *testing.M) {
+	fmt.Println("test main first")
+	m.Run()
+}
