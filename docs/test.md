@@ -66,3 +66,13 @@ t的参数类型：
 
   执行:
   go test -bench=.
+
+
+  参考：
+    https://cloud.tencent.com/developer/article/1469185
+    
+
+6、测试web框架的性能:
+  https://github.com/smallnest/go-web-framework-benchmark
+  docker 版本： https://hub.docker.com/r/smallnest/go-web-framework-benchmark/
+
