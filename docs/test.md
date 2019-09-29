@@ -70,9 +70,12 @@ t的参数类型：
 
   参考：
     https://cloud.tencent.com/developer/article/1469185
-    
 
-6、测试web框架的性能:
+
+6、测试web框架的性能（go）:
   https://github.com/smallnest/go-web-framework-benchmark
   docker 版本： https://hub.docker.com/r/smallnest/go-web-framework-benchmark/
+
+7、对不同语言，不同框架的web测试
+  https://github.com/mihaicracan/web-rest-api-benchmark
 
