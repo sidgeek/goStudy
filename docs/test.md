@@ -79,3 +79,6 @@ t的参数类型：
 7、对不同语言，不同框架的web测试
   https://github.com/mihaicracan/web-rest-api-benchmark
 
+8、压力测试工具-- wrk
+brew install wrk
+
