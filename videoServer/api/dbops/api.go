@@ -3,6 +3,8 @@ package dbops
 import (
 	"database/sql"
 	"log"
+	"time"
+	"videoServer/defs"
 
 	_ "github.com/go-driver/mysql"
 )
@@ -54,4 +56,30 @@ func DeleteUser(loginName string, pwd string) error {
 
 	defer stmtDel.Close()
 	return nil
+}
+
+func AddNewVideo(aid int, name string) (*defs.VideoInfo, error) {
+	// create uuid
+	vid, err := utils.NewUUID()
+	if err != nil {
+		return nil, err
+	}
+
+	t := time.Now()
+	ctime := t.Format("Jan 02 2006, 15:04:05")
+	stmtIns, err := dbConn.Prepare(`INSERT INTO video_info 
+		(id, author_id, name, display_ctime) VALUES(?, ?, ?, ?)`)
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = stmtIns.Exec(vid, aid, name, ctime)
+	if err != nil {
+		return nil, err
+	}
+
+	res := &defs.VideoInfo{Id: vid, AuthorId: aid, Name: name, DisplayCtime: ctime}
+
+	defer stmtIns.Close()
+	return res, nil
 }
