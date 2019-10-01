@@ -1,12 +1,11 @@
 #使用CLI进行数据库(postgres)迁移
 
 ####参考：
-  gormigrate: `https://godoc.org/gopkg.in/gormigrate.v1`
-  
-  golang-migrate/migrate: `https://github.com/golang-migrate/migrate`
+  * gormigrate: `https://godoc.org/gopkg.in/gormigrate.v1`
+  * golang-migrate/migrate: `https://github.com/golang-migrate/migrate`
 
 ####推荐使用: 
-  golang-migrate/migrate `https://github.com/golang-migrate/migrate`
+  * golang-migrate/migrate `https://github.com/golang-migrate/migrate`
 
 
 ##一、准备工作
