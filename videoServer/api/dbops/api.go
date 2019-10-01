@@ -4,9 +4,10 @@ import (
 	"database/sql"
 	"log"
 	"time"
-	"videoServer/defs"
+	"videoServer/api/defs"
+	"videoServer/api/utils"
 
-	_ "github.com/go-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func AddUserCredential(loginName string, pwd string) error {
