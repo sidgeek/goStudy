@@ -1,5 +1,6 @@
 BEGIN;
 
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS video_info;
 DROP TABLE IF EXISTS users;
 
