@@ -1,0 +1,6 @@
+BEGIN;
+
+DROP TABLE IF EXISTS video_info;
+DROP TABLE IF EXISTS users;
+
+COMMIT;

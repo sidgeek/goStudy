@@ -1,0 +1,18 @@
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS users(
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  login_name VARCHAR (64) UNIQUE,
+  pwd TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS video_info(
+  id VARCHAR (64) PRIMARY KEY,
+  author_id INT,
+  name TEXT,
+  display_ctime TEXT,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+COMMIT;
