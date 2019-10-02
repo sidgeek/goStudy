@@ -15,3 +15,16 @@
   ```
   migrate -database ${MYSQL_URL} -path migrations up
   ```
+
+
+
+CREATE TABLE IF NOT EXISTS users(
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  login_name VARCHAR (64) UNIQUE,
+  pwd TEXT NOT NULL
+);
+
+UNSIGNED: 无符号
+AUTO_INCREMENT： 自增
+NOT NULL: 不为null
+
