@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"videoServer/api/dbops"
 	"videoServer/api/defs"
 )
 
@@ -19,10 +20,10 @@ func CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		return
 	}
 
-	//if err := dbops.AddUserCredential(ubody.Username, ubody.Pwd); err != nil {
-	//	sendErrorResponse(w, defs.ErrorDBError)
-	//	return
-	//}
+	if err := dbops.AddUserCredential(ubody.Username, ubody.Pwd); err != nil {
+		sendErrorResponse(w, defs.ErrorDBError)
+		return
+	}
 
 	//id := session.GenerateNewSessionId(ubody.Username)
 	//su := &defs.SignedUp{Success: true, SessionId: id}
