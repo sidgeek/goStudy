@@ -92,11 +92,21 @@ func TestPrint(t *testing.T) {
 8. 压力测试工具-- wrk
     * rew install wrk
 
-9. 注意
+9. 执行
     * 测试单个文件时，注意需要指定测试文件的所有依赖，如
     ````
     go test -v api/dbops/api_test.go api/dbops/api.go api/dbops/conn.go
     ````
-   其中，api.go的运行依赖了conn.go，则需要加上
+    其中，api.go的运行依赖了conn.go，则需要加上
+   
+   *  运行所有测试文件，执行：
+   ```
+   go test -v ./...
+   ```
+   * 执行当前目录下所有测试文件：
+   ```
+   go test -v
+   ```
+   
 
 
